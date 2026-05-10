@@ -228,6 +228,39 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
   .meme-grid{grid-template-columns:1fr}
   .hero-title{font-size:2.5rem}
 }
+
+/* CLICK SHOCKWAVE EFFECT */
+.meme-shockwave{
+  position:fixed;pointer-events:none;border-radius:50%;
+  border:2px solid rgba(84,200,255,0.9);
+  transform:translate(-50%,-50%) scale(0);
+  animation:shockwave 0.65s cubic-bezier(0.2,0.8,0.4,1) forwards;
+  z-index:9999;
+}
+.meme-shockwave2{
+  position:fixed;pointer-events:none;border-radius:50%;
+  border:1px solid rgba(180,235,255,0.5);
+  transform:translate(-50%,-50%) scale(0);
+  animation:shockwave 0.9s cubic-bezier(0.2,0.8,0.4,1) 0.08s forwards;
+  z-index:9999;
+}
+.meme-flash{animation:cardFlash 0.5s ease forwards!important}
+@keyframes shockwave{
+  0%{width:20px;height:20px;opacity:1;box-shadow:0 0 0 0 rgba(84,200,255,0.7),inset 0 0 12px rgba(84,200,255,0.4)}
+  60%{opacity:0.6;box-shadow:0 0 0 8px rgba(84,200,255,0.1),inset 0 0 0 rgba(84,200,255,0)}
+  100%{width:240px;height:240px;opacity:0;box-shadow:0 0 0 0 rgba(84,200,255,0)}
+}
+@keyframes cardFlash{
+  0%{box-shadow:0 0 0 3px rgba(84,200,255,0.9),0 0 40px rgba(84,200,255,0.7),0 0 80px rgba(0,136,204,0.5)}
+  40%{box-shadow:0 0 0 6px rgba(84,200,255,0.6),0 0 60px rgba(84,200,255,0.5),0 0 100px rgba(0,136,204,0.3)}
+  100%{box-shadow:0 16px 48px rgba(0,136,204,.3),0 0 0 2px rgba(84,200,255,.2)}
+}
+
+/* STICKER CARD */
+.comm-sticker{background:linear-gradient(135deg,rgba(84,200,255,.08),rgba(0,136,204,.12));color:var(--blue-3);border-color:rgba(84,200,255,.25)!important}
+.comm-sticker:hover{background:linear-gradient(135deg,rgba(84,200,255,.16),rgba(0,136,204,.22));transform:translateX(6px);border-color:rgba(84,200,255,.5)!important;box-shadow:0 0 28px rgba(84,200,255,.18)}
+.sticker-icons{display:flex;flex-wrap:wrap;gap:2px;width:40px;height:40px;align-content:center;justify-content:center;font-size:1.15rem;line-height:1}
+.sticker-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.68rem;font-weight:700;color:#00e676;background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.25);border-radius:100px;padding:.15rem .55rem;margin-top:.25rem;letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -298,49 +331,49 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
     <h2 class="s-title">Turbo Cats <span>Gallery</span></h2>
     <p class="gallery-sub">Hover to vibe. Click to zoom. Share the meme power.</p>
     <div class="meme-grid">
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/ZEkCE9d.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/ZEkCE9d.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/ZEkCE9d.png" alt="Turbo Cats meme 1" loading="lazy"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
         </div>
         <div class="meme-glow"></div>
       </div>
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/qjsEzbR.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/qjsEzbR.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/qjsEzbR.png" alt="Turbo Cats meme 2" loading="lazy"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
         </div>
         <div class="meme-glow"></div>
       </div>
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/jYyH87O.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/jYyH87O.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/jYyH87O.png" alt="Turbo Cats meme 3" loading="lazy"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
         </div>
         <div class="meme-glow"></div>
       </div>
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/PpZ5Yuh.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/PpZ5Yuh.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/PpZ5Yuh.png" alt="Turbo Cats meme 4" loading="lazy"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
         </div>
         <div class="meme-glow"></div>
       </div>
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/tr7Nrw5.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/tr7Nrw5.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/tr7Nrw5.png" alt="Turbo Cats meme 5" loading="lazy"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
         </div>
         <div class="meme-glow"></div>
       </div>
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/gmPipCA.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/gmPipCA.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/gmPipCA.png" alt="Turbo Cats meme 6" loading="lazy"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
         </div>
         <div class="meme-glow"></div>
       </div>
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/ykU3Snz.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/ykU3Snz.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/ykU3Snz.png" alt="Turbo Cats meme 7" loading="lazy"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
@@ -348,7 +381,7 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
         <div class="meme-glow"></div>
       </div>
       <!-- NEW MEME from https://imgur.com/ZDJnans -->
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/ZDJnans.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/ZDJnans.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/ZDJnans.png" alt="Turbo Cats meme 8" loading="lazy" onerror="this.src='https://i.imgur.com/ZDJnans.jpg'"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
@@ -356,35 +389,64 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
         <div class="meme-glow"></div>
       </div>
 
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/n07Da13.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/n07Da13.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/n07Da13.png" alt="TurboCats gallery" loading="lazy" onerror="this.src='https://i.imgur.com/n07Da13.jpg'"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
         </div>
         <div class="meme-glow"></div>
       </div>
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/LOY2bw7.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/LOY2bw7.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/LOY2bw7.png" alt="TurboCats gallery" loading="lazy" onerror="this.src='https://i.imgur.com/LOY2bw7.jpg'"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
         </div>
         <div class="meme-glow"></div>
       </div>
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/c8IEtbg.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/c8IEtbg.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/c8IEtbg.png" alt="TurboCats gallery" loading="lazy" onerror="this.src='https://i.imgur.com/c8IEtbg.jpg'"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
         </div>
         <div class="meme-glow"></div>
       </div>
-      <div class="meme-card" onclick="openLightbox('https://i.imgur.com/zkwP5y9.png')">
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/zkwP5y9.png')\">
         <div class="meme-img-wrap">
           <img src="https://i.imgur.com/zkwP5y9.png" alt="TurboCats gallery" loading="lazy" onerror="this.src='https://i.imgur.com/zkwP5y9.jpg'"/>
           <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
         </div>
         <div class="meme-glow"></div>
       </div>
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/mweZ3Nr.png')\">
+        <div class="meme-img-wrap">
+          <img src="https://i.imgur.com/mweZ3Nr.png" alt="TurboCats gallery" loading="lazy" onerror="this.src='https://i.imgur.com/mweZ3Nr.jpg'"/>
+          <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
+        </div>
+        <div class="meme-glow"></div>
+      </div>
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/1MNvDco.png')\">
+        <div class="meme-img-wrap">
+          <img src="https://i.imgur.com/1MNvDco.png" alt="TurboCats gallery" loading="lazy" onerror="this.src='https://i.imgur.com/1MNvDco.jpg'"/>
+          <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
+        </div>
+        <div class="meme-glow"></div>
+      </div>
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/R7quTHp.png')\">
+        <div class="meme-img-wrap">
+          <img src="https://i.imgur.com/R7quTHp.png" alt="TurboCats gallery" loading="lazy" onerror="this.src='https://i.imgur.com/R7quTHp.jpg'"/>
+          <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
+        </div>
+        <div class="meme-glow"></div>
+      </div>
+      <div class="meme-card" onclick=\"memeClick(event,'https://i.imgur.com/3wbaaEz.png')\">
+        <div class="meme-img-wrap">
+          <img src="https://i.imgur.com/3wbaaEz.png" alt="TurboCats gallery" loading="lazy" onerror="this.src='https://i.imgur.com/3wbaaEz.jpg'"/>
+          <div class="meme-overlay"><span class="meme-zoom-icon">🔍</span><span class="meme-label">Click to zoom</span></div>
+        </div>
+        <div class="meme-glow"></div>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -496,6 +558,15 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
       <a href="https://t.me/turbocatschat" target="_blank" rel="noopener" class="comm-card comm-tg">
         <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M11.944 0A12 12 0 1 0 24 12 12.014 12.014 0 0 0 11.944 0zm3.264 8.464l-1.64 7.727c-.12.568-.442.705-.895.44l-2.479-1.826-1.198 1.153c-.132.132-.242.242-.496.242l.177-2.524 4.578-4.134c.198-.176-.044-.274-.308-.098L6.25 14.496l-2.423-.757c-.527-.163-.54-.527.11-.78l9.47-3.65c.441-.16.827.11.801.155z"/></svg>
         <div><div class="comm-title">Telegram</div><div class="comm-handle">t.me/turbocatschat</div></div>
+        <div class="comm-arrow">→</div>
+      </a>
+      <a href="https://t.me/addstickers/TurboCats1" target="_blank" rel="noopener" class="comm-card comm-sticker">
+        <div class="sticker-icons">🐱⚡🚀🪙</div>
+        <div>
+          <div class="comm-title">TurboCats Stickers</div>
+          <div class="comm-handle">t.me/addstickers/TurboCats1</div>
+          <div class="sticker-badge">● Free Sticker Pack</div>
+        </div>
         <div class="comm-arrow">→</div>
       </a>
     </div>
@@ -693,7 +764,44 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
   draw();
 })();
 
-/* ===================== LIGHTBOX ===================== */
+/* ===================== LIGHTBOX + CLICK EFFECT ===================== */
+function memeClick(e, src){
+  /* Shockwave ripple effect */
+  const x = e.clientX, y = e.clientY;
+  const ring1 = document.createElement('div');
+  ring1.className = 'meme-shockwave';
+  ring1.style.left = x + 'px';
+  ring1.style.top = y + 'px';
+  document.body.appendChild(ring1);
+  const ring2 = document.createElement('div');
+  ring2.className = 'meme-shockwave2';
+  ring2.style.left = x + 'px';
+  ring2.style.top = y + 'px';
+  document.body.appendChild(ring2);
+  /* Card flash */
+  const card = e.currentTarget;
+  card.classList.remove('meme-flash');
+  void card.offsetWidth;
+  card.classList.add('meme-flash');
+  /* Floating sparks from click point */
+  for(let i=0;i<5;i++){
+    const spark=document.createElement('div');
+    const angle=Math.random()*Math.PI*2;
+    const dist=30+Math.random()*60;
+    spark.style.cssText=`position:fixed;left:${x}px;top:${y}px;pointer-events:none;z-index:9999;font-size:${10+Math.random()*10}px;transition:all 0.6s ease-out;opacity:1;`;
+    spark.textContent=['🪙','⚡','✨','💫','🐱'][Math.floor(Math.random()*5)];
+    document.body.appendChild(spark);
+    requestAnimationFrame(()=>{
+      spark.style.transform=`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist-40}px)`;
+      spark.style.opacity='0';
+    });
+    setTimeout(()=>spark.remove(),700);
+  }
+  /* Cleanup rings */
+  setTimeout(()=>{ring1.remove();ring2.remove();card.classList.remove('meme-flash');},950);
+  /* Open lightbox after brief delay for effect */
+  setTimeout(()=>openLightbox(src), 120);
+}
 function openLightbox(src){
   const lb=document.getElementById('lightbox');
   document.getElementById('lightbox-img').src=src;
