@@ -54,7 +54,7 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
 .contract-box{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-bottom:2rem;animation:fadeDown .6s .42s ease both}
 .contract-label{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim)}
 .contract-value{display:flex;align-items:center;gap:.6rem;background:rgba(84,200,255,.06);border:1px solid rgba(84,200,255,.22);border-radius:10px;padding:.5rem 1.4rem}
-.contract-soon{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:700;color:var(--blue-3);letter-spacing:.25em;animation:pulse 2s ease-in-out infinite}
+.contract-ca{font-family:'Orbitron',monospace;font-size:.95rem;font-weight:700;color:var(--blue-3);letter-spacing:.08em;word-break:break-all;max-width:340px;text-align:center;line-height:1.4}.contract-copy{display:inline-flex;align-items:center;gap:.35rem;background:rgba(84,200,255,.12);border:1px solid rgba(84,200,255,.3);border-radius:8px;padding:.3rem .8rem;font-size:.78rem;font-weight:700;color:var(--blue-3);cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap}.contract-copy:hover{background:rgba(84,200,255,.22);box-shadow:0 0 14px rgba(84,200,255,.3)}.contract-copy.copied{color:#00e676;border-color:#00e676;background:rgba(0,230,118,.1)}
 .hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;animation:fadeDown .6s .48s ease both}
 .hero-net{display:inline-flex;align-items:center;gap:.5rem;color:var(--text-dim);font-size:.8rem;font-weight:500;animation:fadeDown .6s .54s ease both}
 .scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(84,200,255,.4);font-size:.75rem;letter-spacing:.1em;animation:pulse 2s ease-in-out infinite}
@@ -302,10 +302,13 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
   <div class="hero-ticker">$TURBO</div>
   <div class="contract-box">
     <span class="contract-label">Contract Address</span>
-    <div class="contract-value"><span class="contract-soon">SOON</span></div>
+    <div class="contract-value" style="flex-direction:column;gap:.5rem;align-items:center">
+      <span class="contract-ca" id="ca-text">EQBvnah95AWjeufpz5ZafJpE4oVZhgi8Yy7ZM-BIbK0v6sQv</span>
+      <button class="contract-copy" id="ca-copy-btn" onclick="copyCA()">📋 Copy CA</button>
+    </div>
   </div>
   <div class="hero-cta">
-    <a href="https://groypfi.io" target="_blank" rel="noopener" class="btn btn-primary">Buy on Groypfi.io</a>
+    <a href="https://groypfi.io/launchpad?token=EQBvnah95AWjeufpz5ZafJpE4oVZhgi8Yy7ZM-BIbK0v6sQv" target="_blank" rel="noopener" class="btn btn-primary">Buy on Groypfi.io</a>
     <a href="https://t.me/turbocatschat" target="_blank" rel="noopener" class="btn btn-secondary">Join Community</a>
   </div>
   <div class="hero-net">⬡ Powered by TON Network</div>
@@ -540,7 +543,7 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
       <div class="step-card"><div class="step-num">03</div><h3>Visit Groypfi.io</h3><p>Head over to <strong>groypfi.io</strong> — the launchpad where $TURBO is officially launching. Connect your wallet.</p></div>
       <div class="step-card"><div class="step-num">04</div><h3>Buy $TURBO</h3><p>Swap your TON for $TURBO tokens. Set slippage, confirm the transaction, and welcome to the family!</p></div>
     </div>
-    <div class="buy-cta"><a href="https://groypfi.io" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Launch on Groypfi.io →</a></div>
+    <div class="buy-cta"><a href="https://groypfi.io/launchpad?token=EQBvnah95AWjeufpz5ZafJpE4oVZhgi8Yy7ZM-BIbK0v6sQv" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Launch on Groypfi.io →</a></div>
   </div>
 </section>
 
@@ -583,7 +586,7 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
     <div class="footer-links">
       <a href="https://x.com/TurboCats_xyz" target="_blank" rel="noopener">Twitter / X</a>
       <a href="https://t.me/turbocatschat" target="_blank" rel="noopener">Telegram</a>
-      <a href="https://groypfi.io" target="_blank" rel="noopener">Groypfi.io</a>
+      <a href="https://groypfi.io/launchpad?token=EQBvnah95AWjeufpz5ZafJpE4oVZhgi8Yy7ZM-BIbK0v6sQv" target="_blank" rel="noopener">Groypfi.io</a>
     </div>
     <p class="footer-disc">$TURBO is a meme token on the TON blockchain with no intrinsic value or expectation of financial return. This is not financial advice. Crypto investments carry risk — only invest what you can afford to lose.</p>
     <p class="footer-copy">© 2025 Turbo Cats. All rights reserved.</p>
@@ -807,6 +810,21 @@ function openLightbox(src){
   document.getElementById('lightbox-img').src=src;
   lb.classList.add('active');
   document.body.style.overflow='hidden';
+}
+
+/* ===================== COPY CA ===================== */
+function copyCA(){
+  const ca = "EQBvnah95AWjeufpz5ZafJpE4oVZhgi8Yy7ZM-BIbK0v6sQv";
+  navigator.clipboard.writeText(ca).then(()=>{
+    const btn = document.getElementById('ca-copy-btn');
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='📋 Copy CA';btn.classList.remove('copied');},2000);
+  }).catch(()=>{
+    const el=document.createElement('textarea');el.value=ca;document.body.appendChild(el);el.select();document.execCommand('copy');document.body.removeChild(el);
+    const btn=document.getElementById('ca-copy-btn');btn.textContent='✓ Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='📋 Copy CA';btn.classList.remove('copied');},2000);
+  });
 }
 function closeLightbox(){
   document.getElementById('lightbox').classList.remove('active');
