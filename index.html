@@ -33,7 +33,7 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
 .nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
 .nav-logo-text{font-family:'Orbitron',monospace;font-weight:900;font-size:1rem;color:#fff;letter-spacing:.08em}
 .nav-logo-text span{color:var(--blue-3)}
-.nav-logo-emoji{font-size:1.8rem;line-height:1}
+.nav-logo-emoji{width:36px;height:36px;border-radius:50%;border:2px solid var(--blue-3);object-fit:cover;box-shadow:0 0 12px rgba(84,200,255,.5)}
 .nav-links{display:flex;align-items:center;gap:1.3rem}
 .nav-links a{color:var(--text-dim);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .2s}
 .nav-links a:hover{color:var(--blue-3)}
@@ -46,7 +46,7 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
 .hero-logo-wrap{position:relative;display:inline-block;margin-bottom:1.5rem;animation:fadeDown .6s .1s ease both}
 .hero-logo-ring{position:absolute;inset:-10px;border-radius:50%;border:2px solid rgba(84,200,255,.35);animation:spin 8s linear infinite;background:conic-gradient(from 0deg,transparent 60%,rgba(84,200,255,.5) 100%)}
 .hero-logo{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--blue-3);box-shadow:0 0 40px rgba(84,200,255,.45),0 0 80px rgba(0,136,204,.25);position:relative;z-index:1;animation:float 4s ease-in-out infinite;font-size:5rem;display:flex;align-items:center;justify-content:center;background:rgba(84,200,255,.08)}
-.hero-logo-emoji{font-size:5rem;display:flex;align-items:center;justify-content:center;width:160px;height:160px;border-radius:50%;border:3px solid var(--blue-3);box-shadow:0 0 40px rgba(84,200,255,.45),0 0 80px rgba(0,136,204,.25);position:relative;z-index:1;animation:float 4s ease-in-out infinite;background:rgba(84,200,255,.08)}
+.hero-logo-emoji{display:block;width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--blue-3);box-shadow:0 0 40px rgba(84,200,255,.45),0 0 80px rgba(0,136,204,.25);position:relative;z-index:1;animation:float 4s ease-in-out infinite;background:rgba(84,200,255,.08)}
 .hero-title{font-family:'Orbitron',monospace;font-size:clamp(3rem,9vw,6rem);font-weight:900;color:#fff;letter-spacing:.08em;line-height:1;margin-bottom:1rem;animation:fadeDown .6s .2s ease both;text-shadow:0 0 40px rgba(84,200,255,.5)}
 .hero-title span{color:var(--blue-3)}
 .hero-sub{font-size:1.1rem;color:var(--text-dim);line-height:1.7;max-width:480px;margin:0 auto 1.5rem;animation:fadeDown .6s .3s ease both}
@@ -210,7 +210,7 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
   .rm-card:last-child::before{bottom:100%}
   .rm-dot{flex-shrink:0;margin-right:1.2rem;margin-bottom:0}
   .rm-body{padding-top:.6rem}
-  .hero-logo-emoji{width:130px;height:130px;font-size:3.5rem}
+  .hero-logo-emoji{width:130px;height:130px}
   .game-wrap{max-width:320px}
 }
 @media(max-width:640px){
@@ -269,7 +269,7 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
 <nav class="navbar">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <span class="nav-logo-emoji">🐱</span>
+      <img class="nav-logo-emoji" src="https://i.imgur.com/GvE77O7.png" alt="Turbo Cats Logo"/>
       <span class="nav-logo-text">TURBO<span>CATS</span></span>
     </a>
     <div class="nav-links">
@@ -294,7 +294,7 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
   <div class="hero-badge">🚀 Launching on HyperEVM</div>
   <div class="hero-logo-wrap">
     <div class="hero-logo-ring"></div>
-    <div class="hero-logo-emoji">🐱</div>
+    <img class="hero-logo-emoji" src="https://i.imgur.com/GvE77O7.png" alt="Turbo Cats"/>
   </div>
   <h1 class="hero-title">TURBO<span>CATS</span></h1>
   <p class="hero-sub">The fastest cats in the crypto galaxy.<br>Riding HyperEVM to the moon.</p>
@@ -558,7 +558,7 @@ a,button,[role=button],.meme-card,.game-canvas,.about-card,.step-card,.comm-card
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-logo">
-      <span style="font-size:1.6rem">🐱</span>
+      <img src="https://i.imgur.com/GvE77O7.png" alt="Turbo Cats" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid var(--blue-3)"/>
       <span>TURBO<span style="color:var(--blue-3)">CATS</span></span>
     </div>
     <p class="footer-desc">The fastest meme coin on HyperEVM. Launching on alt.fun.</p>
@@ -654,9 +654,17 @@ let keys={};
 
 const gc = document.getElementById('game-canvas').getContext('2d');
 
+const catImg = new Image();
+catImg.src = 'https://i.imgur.com/IPcThTQ.png';
+
 function drawCat(x,y){
-  gc.font='32px serif'; gc.textAlign='center'; gc.textBaseline='middle';
-  gc.fillText('🐱',x,y);
+  const size=44;
+  if(catImg.complete && catImg.naturalWidth>0){
+    gc.drawImage(catImg, x-size/2, y-size/2, size, size);
+  } else {
+    gc.font='32px serif'; gc.textAlign='center'; gc.textBaseline='middle';
+    gc.fillText('🐱',x,y);
+  }
 }
 function drawCoin(x,y){
   gc.font='20px serif'; gc.textAlign='center'; gc.textBaseline='middle';
